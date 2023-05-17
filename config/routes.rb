@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  root to:             "homes#top"
-  get "homes/about" => "homes#about", as: "about"
-
   devise_for :admin
 
     # 顧客用
@@ -11,21 +8,25 @@ Rails.application.routes.draw do
     sessions:      "public/sessions"
   }
 
-  resources :items, only: [:index, :show]
+  scope module: :public do
+    root to:             "homes#top"
+    get "about" => "homes#about", as: "about"
 
-  resource :customers, only: [:show, :update]
-  get    "customers/information/edit" => "customers#edit",        as: "edit"
-  get    "customers/unsubscribe"      => "customers#unsubscribe", as: "unsubscribe"
-  patch  "customers/withdraw"         => "customers#withdraw",    as: "withdraw"
+    resources :items, only: [:index, :show]
 
-  resources :cart_items, only: [:index, :create, :update, :destroy]
-  delete "cart_items/destroy_all" => "cart_items#destroy_all", as: "destroy_all"
+    resource :customers, only: [:show, :update]
+    get    "customers/information/edit" => "customers#edit",        as: "edit"
+    get    "customers/unsubscribe"      => "customers#unsubscribe", as: "unsubscribe"
+    patch  "customers/withdraw"         => "customers#withdraw",    as: "withdraw"
 
-  resources :orders, only: [:new, :index, :create, :show]
-  post   "orders/confirm"  => "orders#confirm",  as: "confirm"
-  get    "orders/complete" => "orders#complete", as: "complete"
+    resources :cart_items, only: [:index, :create, :update, :destroy]
+    delete "cart_items/destroy_all" => "cart_items#destroy_all", as: "destroy_all"
 
-  resources :destinations, only: [:index, :edit, :create, :update, :destroy]
+    resources :orders, only: [:new, :index, :create, :show]
+    post   "orders/confirm"  => "orders#confirm",  as: "confirm"
+    get    "orders/complete" => "orders#complete", as: "complete"
 
+    resources :destinations, only: [:index, :edit, :create, :update, :destroy]
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
