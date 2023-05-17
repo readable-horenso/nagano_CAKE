@@ -4,8 +4,18 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
   def change
     create_table :customers do |t|
       ## Database authenticatable
-      t.string :email,              null: false, default: ""
-      t.string :encrypted_password, null: false, default: ""
+      t.string :email,              null: false, default: "", unique: true
+      t.string :encrypted_password, null: false, default: "", unique: true
+
+      # カラム追加
+      t.string :family_name, null: false
+      t.string :given_name, null: false
+      t.string :family_name_kana, null: false
+      t.string :given_name_kana, null: false
+      t.string :postcode, null: false
+      t.string :address, null: false
+      t.string :phone_number, null: false
+      t.boolean :is_deleted, null: false, default: false
 
       ## Recoverable
       t.string   :reset_password_token
