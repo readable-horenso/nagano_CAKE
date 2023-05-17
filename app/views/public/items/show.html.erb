@@ -1,2 +1,22 @@
 <h1>Public::Items#show</h1>
 <p>Find me in app/views/public/items/show.html.erb</p>
+
+<div>
+<!--ジャンル-->
+
+  <div>
+    <div><%#= @item.image, size: "100x150" %></div>
+    <p><%#= @item.name %></p>
+    <p><%#= @item.description %></p>
+    <p><%#= %></p>
+
+    <%= form_with model: CartItem.new, local: true do |f| %>
+    <div class="form-group">
+      <%= f.select :quantity, [["選択肢１", 1], ["選択肢２", 2]], include_blank: "個数選択" %>
+      <%= f.submit "カートに入れる" %>
+    </div>
+    <% end %>
+
+  </div>
+
+</div>
