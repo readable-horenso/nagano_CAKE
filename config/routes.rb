@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  devise_for :admin
-
     # 顧客用
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -39,5 +37,21 @@ Rails.application.routes.draw do
     resources :destinations, only: [:index, :edit, :create, :update, :destroy]
 
   end
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  # 管理者用
+ 
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+    sessions: "admin/sessions"
+  }
+
+
+  namespace :admin do
+    resources :orders, only: [:show, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :genres, only: [:index, :edit, :create, :update]
+    resources :items, only: [:new, :index, :show, :edit, :create, :update]
+    resources :order_details, only: [:update]
+    root to: "homes#top"
+  end
+
 end
