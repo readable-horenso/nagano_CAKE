@@ -1,32 +1,59 @@
 <!--ヘッダーのパーシャル-->
 
-<h1>商品新規登録</h1>
-  <%= form_with model: @item, url: admin_items_path, local: true do |f| %>
+<div class='container'>
+  <div class='row justify-content-md-center'>
+    <div class='col-md-10'>
 
-    <h4>商品画像</h4>
-      <%= f.file_field :image, accept: 'image/*' %>
+    <h1>商品新規登録</h1>
+    
+    <div class='col-md-6'>
+      
+    <%= form_with model: @item, url: admin_items_path, local: true do |f| %>
 
-    <h4>商品名</h4>
-      <%= f.text_field :name %>
-
-    <h4>商品説明</h4>
-      <%= f.text_area :description %>
-
-    <h4>ジャンル</h4>
-      <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: '選択して下さい' %>
-
-    <h4>税抜価格</h4>
-      <%= f.number_field :price %><%= '円' %>
-
-    <h4>販売ステータス</h4>
-      <%= f.radio_button :is_valid, true %>
-      <%= f.label :is_valid, '販売中', value: true %>
-
-      <%= f.radio_button :is_valid, false %>
-      <%= f.label :is_valid, '販売停止中', value: false %>
-
+    <%= f.label :商品画像 %>
+    <div class='form-group'>
+    <%= f.file_field :image, accept: 'image/*', class: 'form-control item_image' %>
+    </div>
+    
+    <%= f.label :商品名 %>
+    <div class='form-group'>
+    <%= f.text_field :name, class: 'form-control item_name' %>
+    </div>
+    
+    <%= f.label :商品説明 %>
+    <div class='form-group'>
+    <%= f.text_area :description, class: 'form-control item_description' %>
+    </div>
+    
+    <%= f.label :ジャンル %>
+    <div class='form-group'>
+    <div class='btn-group'>
+    <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: '選択して下さい', class: 'form-control item_genre' %>
+    </div>
+    </div>
+    
+    <%= f.label :税抜価格 %>
+    <div class='form-group'>
+    <%= f.number_field :price, class: 'form-control item_price' %><%= '円' %>
+    </div>
+    
+    <%= f.label :販売ステータス %>
+    <div class='form-check'>
+    <%= f.radio_button :is_valid, true, class: 'form-control item_is_valid_true' %>
+    <%= f.label :is_valid, '販売中', value: true %>
+    
+    <%= f.radio_button :is_valid, false, class: 'form-control item_is_valid_false' %>
+    <%= f.label :is_valid, '販売停止中', value: false %>
+    </div>
+    
+    <div class='row'>
     <%= f.submit '新規登録' %>
-
-  <% end %>
+    </div>
+    
+    <% end %>
+    </div>
+    </div>
+  </div>
+</div>
 
 <!--フッターのパーシャル-->
