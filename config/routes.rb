@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-
+  scope module: :public do
+    resource :customers, only: [:update]
+  end
+  
     # 顧客用
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -13,7 +16,7 @@ Rails.application.routes.draw do
 
     resources :items, only: [:index, :show]
 
-    resource :customers, only: [:show, :update] do
+    resource :customers, only: [:show] do
       get      "information/edit" => "customers#edit",        as: "edit"
       collection do
         get    "unsubscribe"      => "customers#unsubscribe", as: "unsubscribe"
