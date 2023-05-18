@@ -1,14 +1,14 @@
 <!--ヘッダーのパーシャル-->
 
-<h1>ジャンル編集</h1>
-
-<%= form_with model:@genre, url: admin_genre_path do |f| %>
-    
-  <h4>ジャンル名</h4>
-    <%= f.text_field :name %>
-    
-  <%= f.submit '変更を保存' %>
+<div class='container'>
   
-<% end %>
+<div class='row'>
+  <h2 class="display-8">ジャンル編集</h2>
+</div>
+
+<%= render partial: 'genre_form', locals: {     form_url: admin_genre_path,
+                                            button_label: '変更を保存'} %>
+
+</div>
 
 <!--フッターのパーシャル-->

@@ -1,30 +1,43 @@
 <!--ヘッダーのパーシャル-->
 
-<h1>商品一覧</h1>
+<div class='container'>
 
-  <table>
-    <tr>
+<div class='row'>
+  <h2 class='display-8'>商品一覧</h2>
+</div>
+
+<div class='row'>
+  <table class='table text-center'>
+    <thead class='table table-secondary'>
+      <tr>
       <th>商品ID</th>
       <th>商品名</th>
       <th>税抜価格</th>
       <th>ジャンル</th>
       <th>ステータス</th>
-    </tr>
+      </tr>
+    </thead>
+
+    <tbody>
     <% @items.each do |item| %>
-    <tr>
-      <td><%= item.id %></td>
-      <td><%= link_to item.name, admin_item_path(item) %></td>
-      <td><%= item.price.to_s(:delimited) %></td>
-      <td><%= item.genre.name %></td>
-      <td>
+      <tr>
+        <td><%= item.id %></td>
+        <td><%= link_to item.name, admin_item_path(item) %></td>
+        <td><%= item.price.to_s(:delimited) %></td>
+        <td><%= item.genre.name %></td>
+        <td>
           <% if item.is_valid %>
             <%= '販売中' %>
           <% else %>
             <%= '販売停止中' %>
           <% end %>
-      </td>
-    </tr>
+        </td>
+      </tr>
     <% end %>
+    </tbody>
   </table>
+</div>
+
+</div>
 
 <!--フッターのパーシャル-->

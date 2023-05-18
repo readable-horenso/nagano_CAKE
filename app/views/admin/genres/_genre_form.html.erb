@@ -1,0 +1,14 @@
+<div class="row mb-4">
+
+  <%= form_with model: @genre, url: form_url do |f| %>
+
+  <div class="col-6">
+  <h4>ジャンル名</h4>
+  </div>
+  <div class="col-6">
+  <%= f.text_field :name, class: "form-control" %>
+  <%= f.submit button_label, class: "btn btn-primary" %>
+  </div>
+  <% end %>
+
+</div>
