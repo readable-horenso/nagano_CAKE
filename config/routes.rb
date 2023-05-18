@@ -42,7 +42,6 @@ Rails.application.routes.draw do
   end
 
   # 管理者用
- 
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
@@ -56,5 +55,7 @@ Rails.application.routes.draw do
     resources :order_details, only: [:update]
     root to: "homes#top"
   end
+  
+  get "search" => "searches#search"
 
 end

@@ -21,6 +21,12 @@ class Public::CustomersController < ApplicationController
   end
 
   def withdraw
+    @customer = current_customer
+    # is_deletedカラムをtrueにupdate
+    @customer.update(is_deleted: true)
+    #セッション情報を全て削除（セキュリティ面のリスク回避のため）
+    reset_session
+    redirect_to root_path, notice: "退会処理を実行いたしました。"
   end
 
   private
