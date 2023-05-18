@@ -1,8 +1,9 @@
-<div class="container" >
+<div class="container">
   <div class="row" >
-    <!-- ここに部分テンプレートを入れる -->
+    <!-- ここにジャンル検索の部分テンプレートを入れる -->
     <div class="col-md-8 offset-md-1">
       <div class="card">
+        <!-- 写真は自由に変えていいです-->
         <%= image_tag "no_image.jpg", class: "card-img" %>
         <div class="card-img-overlay d-flex align-items-center justify-content-center">
           <p>ようこそ、NaganoCakeへ！<br>
@@ -12,6 +13,20 @@
           </p>
         </div>
       </div>
+      <h1>新着商品</h1>
+      <div class="row">
+      <% @items.each do |item| %>
+        <div class="col-md-3">
+          <div>
+            <%= image_tag item.image, size: "160x160" %>
+            <p><%= link_to item.name, admin_item_path(item) %></p>
+            <!--消費税はまだ計算してません -->
+            <p>¥<%= item.price.to_s(:delimited) %></p>
+          </div>
+        </div>
+      <% end %>
+      </div>
+      <p class="text-right"><%= link_to "全ての商品を見る>",  admin_items_path %></p>
     </div>
   </div>
 </div>
