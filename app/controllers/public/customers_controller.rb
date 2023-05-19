@@ -26,7 +26,8 @@ class Public::CustomersController < ApplicationController
     @customer.update(is_deleted: true)
     #セッション情報を全て削除（セキュリティ面のリスク回避のため）
     reset_session
-    redirect_to root_path, notice: "退会処理を実行いたしました。"
+    flash[:withdraw] = "退会処理を実行いたしました。"
+    redirect_to root_path
   end
 
   private
