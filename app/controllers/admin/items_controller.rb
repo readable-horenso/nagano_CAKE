@@ -3,8 +3,7 @@ class Admin::ItemsController < ApplicationController
   # before_action :authenticate_admin!
 
   def index
-    @items = Item.all
-    # .page(params[:page]).per(10)
+    @items = Item.all.page(params[:page]).per(10)
   end
 
   def new
@@ -14,9 +13,10 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if  @item.save
-        flash[:notice] = '商品が新規登録されました'
+        flash[:success] = '商品が新規登録されました'
         redirect_to admin_items_path
     else
+        flash.now[:danger] = "全て入力してください"
         render :new
     end
   end
@@ -32,9 +32,10 @@ class Admin::ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     if  @item.update(item_params)
-        flash[:notice] = '商品が更新されました'
+        flash[:warning] = '商品が更新されました'
         redirect_to admin_item_path(@item)
     else
+        flash.now[:danger] = "全て入力してください"
         render :edit
     end
   end

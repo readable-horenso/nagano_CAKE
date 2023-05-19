@@ -1,14 +1,20 @@
 <!--ヘッダーのパーシャル-->
 
-<div class='container'>
-  
-<div class='row'>
-  <h2 class="display-8">ジャンル編集</h2>
+<div>
+  <%= render 'layouts/flash_message' %>
 </div>
 
-<%= render partial: 'genre_form', locals: {     form_url: admin_genre_path,
+<div class='container'>
+  <div class='row justify-content-center'>
+    <div class='col-lg-10'>
+
+    <h1 class='mb-5'>ジャンル編集</h2>
+
+    <%= render partial: 'genre_form', locals: {     form_url: admin_genre_path,
                                             button_label: '変更を保存'} %>
 
+    </div>
+  </div>
 </div>
 
 <!--フッターのパーシャル-->
