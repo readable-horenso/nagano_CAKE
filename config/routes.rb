@@ -52,6 +52,7 @@ Rails.application.routes.draw do
     resources :order_details, only: [:update]
     root to: "homes#top"
   end
-
-
+  
+  get "search" => "searches#search"
+  
 end
