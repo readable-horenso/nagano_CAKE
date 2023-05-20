@@ -10,10 +10,12 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column vh-100">
     <!-- ヘッダー-->
     <%= render "layouts/header" %>
+    <main class="mb-auto">
     <%= yield %>
+    </main>
     <!-- フッター-->
     <%= render "layouts/footer" %>
   </body>
