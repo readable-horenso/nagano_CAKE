@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
+
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_admin!, if: :admin_url
+  
+   # Bootstrapでフラッシュメッセージ
+  add_flash_types :success, :info, :warning, :danger
   
   private
   
@@ -33,10 +37,10 @@ class ApplicationController < ActionController::Base
     request.fullpath.include?("/admin")
   end
 
-  
   protected
   
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:family_name, :given_name, :family_name_kana, :given_name_kana, :email, :postcode, :address, :phone_number])
   end
+  
 end

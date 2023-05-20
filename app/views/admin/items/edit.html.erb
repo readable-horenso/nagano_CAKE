@@ -1,57 +1,14 @@
 <!--ヘッダーのパーシャル-->
 
 <div class='container'>
-  <div class='row justify-content-md-center'>
-    <div class='col-md-10'>
+  <div class='row justify-content-center'>
+    <div class='col-lg-10'>
 
-    <h1>商品編集</h1>
+    <h1 class='mb-5'>商品編集</h1>
 
-    <div class='col-md-6'>
+    <%= render partial: 'item_form', locals: {     form_url: admin_item_path(@item),
+                                               button_label: '変更を保存'} %>
 
-    <%= form_with model: @item, url: admin_item_path(@item), local: true do |f| %>
-
-    <%= f.label :商品画像 %>
-    <div class='form-group'>
-    <%= f.file_field :image, accept: 'image/*', class: 'form-control item_image' %>
-    </div>
-
-    <%= f.label :商品名 %>
-    <div class='form-group'>
-    <%= f.text_field :name, class: 'form-control item_name' %>
-    </div>
-
-    <%= f.label :商品説明 %>
-    <div class='form-group'>
-    <%= f.text_area :description, class: 'form-control item_description' %>
-    </div>
-
-    <%= f.label :ジャンル %>
-    <div class='form-group'>
-    <div class='btn-group'>
-    <%= f.collection_select :genre_id, Genre.all, :id, :name, class: 'form-control item_genre' %>
-    </div>
-    </div>
-
-    <%= f.label :税抜価格 %>
-    <div class='form-group'>
-    <%= f.number_field :price, class: 'form-control item_price' %><%= '円' %>
-    </div>
-
-    <%= f.label :販売ステータス %>
-    <div class='form-check'>
-    <%= f.radio_button :is_valid, true, class: 'form-control item_is_valid_true' %>
-    <%= f.label :is_valid, '販売中', value: true %>
-
-    <%= f.radio_button :is_valid, false, class: 'form-control item_is_valid_false' %>
-    <%= f.label :is_valid, '販売停止中', value: false %>
-    </div>
-
-    <div class='row'>
-    <%= f.submit '変更を保存' %>
-    </div>
-
-    <% end %>
-    </div>
     </div>
   </div>
 </div>
