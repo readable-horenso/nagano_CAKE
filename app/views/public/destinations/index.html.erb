@@ -1,8 +1,13 @@
+<div>
+  <%= render 'layouts/flash_message' %>
+</div>
+
 <div class="container">
   <h1 class="mb-5">配送先登録/一覧</h1>
 
     <!-- 配送先登録  -->
-  <%= render "public/destinations/destinations_form", destination: @destination %>
+  <%= render partial: "destinations_form", locals: { button_label: "新規登録",
+                                                     destination: @destination} %>
 
   <!--配送先一覧 -->
   <table class="table">

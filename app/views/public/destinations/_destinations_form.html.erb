@@ -5,7 +5,7 @@
       郵便番号(ハイフンなし)
     </p>
     <div class="col-md-2 form-group">
-      <%= f.number_field :postcode, class: "form-control border-dark" %>
+      <%= f.text_field :postcode, class: "form-control border-dark" %>
     </div>
   </div>
 
@@ -26,7 +26,7 @@
       <%= f.text_field :name, class: "form-control border-dark" %>
     </div>
     <div class="col-md-6 text-right">
-      <%= f.submit "新規登録", class: "btn btn-success btn-lg pull-right" %>
+      <%= f.submit button_label, class: "btn btn-success btn-lg pull-right" %>
     </div>
   </div>
 <% end %>

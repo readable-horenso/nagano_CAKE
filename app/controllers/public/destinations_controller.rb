@@ -6,6 +6,7 @@ class Public::DestinationsController < ApplicationController
   end
 
   def edit
+    @destination = Destination.find(params[:id])
   end
 
   def create
@@ -21,11 +22,20 @@ class Public::DestinationsController < ApplicationController
   end
 
   def update
+    @destination = Destination.find(params[:id])
+    if  @destination.update(destination_params)
+        flash[:warning] = "配送先が更新されました"
+        redirect_to destinations_path
+    else
+        flash.now[:danger] = "全て入力してください"
+        render :edit
+    end
   end
 
   def destroy
     destination = Destination.find(params[:id])
     destination.destroy
+    flash[:danger] = "削除しました"
     redirect_to destinations_path
   end
 
