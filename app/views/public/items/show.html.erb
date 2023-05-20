@@ -4,26 +4,37 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-4">
+    <div class="col-3">
 
     <!--ジャンル-->
 
     </div>
 
-    <div class="col-8">
+    <div class="col-9">
 
-      <div><%#= @item.image, size: "100x150" %></div>
-      <p><%#= @item.name %></p>
-      <p><%#= @item.description %></p>
-      <p><%#= (@item.price * 1.1).floor %></p>
+      <div class="media">
+        <div><%= image_tag @item.image, size: "400x300", class: "mr-3" %></div>
+        <div class="media-body">
+          <h3 class="font-weight-bold"><%= @item.name %></h3>
+          <p class="h5 mb-5"><%= @item.description %></p>
+          <h4 class="d-inline"><%= @item.with_tax_price.to_s(:delimited) %>円</h4>
+          <p class="d-inline">(税込)</p>
+        </div>
+      </div>
 
       <!--カートアイテムへのフォーム-->
       <%= form_with model: CartItem.new, local: true do |f| %>
-      <div class="form-group">
-        <%= f.select :quantity, *[1..10], include_blank: "個数選択", class: "form-select" %>
+        <div class="row form-inline">
 
-        <%= f.submit "カートに入れる", class: "btn btn-success" %>
-      </div>
+          <div class="form-group my-1 mr-sm-5">
+          <%= f.select :quantity, *[1..10], {include_blank: "個数選択"}, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+          <%= f.submit "カートに入れる", class: "btn btn-success" %>
+          </div>
+
+        </div>
       <% end %>
 
     </div>
