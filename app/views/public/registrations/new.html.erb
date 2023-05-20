@@ -6,17 +6,17 @@
     
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 　　
-　<form>　
-    <div class="row mb-3">
+　<form class="form-horizontal">　
+    <div class="row mb-3 form-group">
         <label class="col-sm-3 col-form-label">お名前 <span class="badge bg-danger">必須</span></label>
         <div class="col-sm-9">
           
           <div class="row">
-            <label class="col-form-label col-sm-1">姓</label>
+            <label class="col-form-label">姓</label>
               <div class="col-sm">
                 <%= f.text_field :family_name, autofocus: true, autocomplete: "family_name", placeholder: "令和" %>
               </div>
-            <label class="col-form-label col-sm-1">名</label>
+            <label class="col-form-label">名</label>
               <div class="col-sm">
               <%= f.text_field :given_name, autofocus: true, autocomplete: "given_name", placeholder: "道子" %>
               </div>
@@ -24,16 +24,16 @@
         </div>
     </div>
     
-    <div class="row mb-3">
+    <div class="row mb-3 form-group">
         <label class="col-sm-3 col-form-label">フリガナ <span class="badge bg-danger">必須</span></label>
         <div class="col-sm-9">
           
           <div class="row">
-            <label class="col-form-label col-sm-1">セイ</label>
+            <label class="col-form-label">セイ</label>
               <div class="col-sm">
                 <%= f.text_field :family_name_kana, autofocus: true, autocomplete: "family_name_kana", placeholder: "レイワ" %>
               </div>
-            <label class="col-form-label col-sm-1">メイ</label>
+            <label class="col-form-label">メイ</label>
               <div class="col-sm">
                 <%= f.text_field :given_name_kana, autofocus: true, autocomplete: "given_name_kana", placeholder: "ミチコ" %>
               </div>
@@ -41,35 +41,35 @@
         </div>
     </div>
     
-    <div class="row">
+    <div class="row form-group">
         <label class="col-sm-3 col-form-label">メールアドレス <span class="badge bg-danger">必須</span></label>
         <div class="col-sm-9">
           <%= f.email_field :email, autofocus: true, autocomplete: "email", :size=>40, placeholder: "sample@example.com" %>
         </div>
     </div>
     
-    <div class="row">
+    <div class="row form-group">
         <label class="col-sm-3 col-form-label">郵便番号<span class="badge bg-danger">必須</span></label>
         <div class="col-sm-9">
           <%= f.text_field :postcode, autofocus: true, autocomplete: "postcode", placeholder: "0000000" %>
         </div>
     </div>
     
-    <div class="row">
+    <div class="row form-group">
         <label class="col-sm-3 col-form-label">住所<span class="badge bg-danger">必須</span></label>
         <div class="col-sm-9">
           <%= f.text_field :address, autofocus: true, autocomplete: "address", :size=>60, placeholder: "東京都渋谷区代々木神園町0-0" %>
         </div>
     </div>
 
-  <div class="row">
+  <div class="row form-group">
     <label class="col-sm-3 col-form-label">電話番号 <span class="badge bg-danger">必須</span></label>
     <div class="col-sm-9">
     <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", placeholder: "000000000" %>
     </div>
   </div>
   
-  <div class="row">
+  <div class="row form-group">
     <label class="col-sm-3 col-form-label">パスワード
       <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> 文字以上)</em>
@@ -81,14 +81,14 @@
     </div>
   </div>
   
-  <div class="row">
+  <div class="row form-group">
     <label class="col-sm-3 col-form-label">パスワード（確認用） <span class="badge bg-danger">必須</span></label>
     <div class="col-sm-9">
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
   </div>
   
-  <div class="text-center my-3 col-8">
+  <div class="text-center my-3 col-8 form-group">
     <%= f.submit "新規登録", class: "btn btn-success" %>
   </div>
   <% end %>
@@ -98,7 +98,9 @@
       <h3>既に登録済みの方</h3>
   </div>
   <div class="row">
-    <%= render "public/shared/links" %>
+    <div class="col-10 mx-auto">
+      <%= render "public/shared/links" %>
+    </div>
   </div>
 </div>
 
