@@ -1,2 +1,27 @@
-<h1>Public::Destinations#index</h1>
-<p>Find me in app/views/public/destinations/index.html.erb</p>
+<div class="container">
+  <h1 class="mb-5">配送先登録/一覧</h1>
+
+    <!-- 配送先登録  -->
+  <%= render "public/destinations/destinations_form", destination: @destination %>
+
+  <!--配送先一覧 -->
+  <table class="table">
+    <tr>
+      <th>郵便番号</th>
+      <th>住所</th>
+      <th>宛名</th>
+      <th colspan="2"></th>
+    </tr>
+
+    <% @destinations.each do |destination| %>
+      <tr>
+        <td><%= destination.postcode %></td>
+        <td><%= destination.address %></td>
+        <td><%= destination.name %></td>
+        <td><%= link_to "編集する", edit_destination_path(destination), class: "btn btn-primary" %></td>
+        <td><%= link_to "削除する", destination_path(destination), method: :delete, class: "btn btn-danger", data: { confirm: "本当に削除しますか？" } %></td>
+      </tr>
+    <% end %>
+
+  </table>
+</div>
