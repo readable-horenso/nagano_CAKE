@@ -1,14 +1,20 @@
 <!--ヘッダーのパーシャル-->
 
-<h1>ジャンル編集</h1>
+<div>
+  <%= render 'layouts/flash_message' %>
+</div>
 
-<%= form_with model:@genre, url: admin_genre_path do |f| %>
-    
-  <h4>ジャンル名</h4>
-    <%= f.text_field :name %>
-    
-  <%= f.submit '変更を保存' %>
-  
-<% end %>
+<div class='container'>
+  <div class='row justify-content-center'>
+    <div class='col-lg-10'>
+
+    <h1 class='mb-5'>ジャンル編集</h2>
+
+    <%= render partial: 'genre_form', locals: {     form_url: admin_genre_path,
+                                            button_label: '変更を保存'} %>
+
+    </div>
+  </div>
+</div>
 
 <!--フッターのパーシャル-->
