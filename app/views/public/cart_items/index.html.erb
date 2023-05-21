@@ -1,2 +1,56 @@
 <h1>Public::CartItems#index</h1>
 <p>Find me in app/views/public/cart_items/index.html.erb</p>
+
+<div class="container">
+  <div class="row align-items-center">
+    <h3 class="col">ショッピングカート</h3>
+    <div class="col text-right">カートを空にするボタン</div>
+  </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+
+      <% @cart_items.each do |cart_item| %>
+        <tr>
+          <td>
+            <%= image_tag cart_item.item.image, size: "100x70" %>
+            <%= cart_item.item.name %>
+          </td>
+          <td><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
+
+          <!--数量のselectと変更ボタン-->
+    　　　<%= form_with model: cart_item, local: true do |f| %>
+          <td class="form-inline">
+            <%= f.select :quantity, [*1..10], {}, required: true, class: "form-control mr-3" %>
+            <%= f.submit "変更", class: "btn btn-success" %>
+          </td>
+    	    <% end %>
+
+          <!--小計（税込単価×数量-->
+          <td><%= (cart_item.quantity * cart_item.item.with_tax_price).to_s(:delimited) %></td>
+          <td>削除ボタン</td>
+        </tr>
+      <% end %>
+
+      </tbody>
+    </table>
+
+  <div class="row justify-content-end">
+    <div>合計金額</div>
+  </div>
+
+  <div class="row text-center">
+    <div class="col-4">買い物を続けるボタン</div>
+    <div class="col-4">情報入力に進むボタン</div>
+  </div>
+
+</div>
