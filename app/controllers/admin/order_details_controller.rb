@@ -20,9 +20,9 @@ class Admin::OrderDetailsController < ApplicationController
     
     @order.update(status: 3) if all_is_updated
     
+    redirect_to admin_order_path(@order)
+    
   end
-  
-  redirect_to admin_order_path(@order)
   
   private
   
