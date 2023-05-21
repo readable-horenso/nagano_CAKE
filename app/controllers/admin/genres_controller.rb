@@ -14,7 +14,7 @@ class Admin::GenresController < ApplicationController
       flash[:success] = "ジャンル名が新規登録されました"
       redirect_to admin_genres_path
     else
-      flash.now[:danger] = "全て入力してください"
+      flash.now[:danger] = "ジャンル名を入力してください"
       render :index
     end
   end
@@ -29,7 +29,7 @@ class Admin::GenresController < ApplicationController
       flash[:warning] = 'ジャンル名が更新されました'
       redirect_to admin_genres_path
     else
-      flash.now[:danger] = "全て入力してください"
+      flash.now[:danger] = "ジャンル名を入力してください"
       render :edit
     end
   end
