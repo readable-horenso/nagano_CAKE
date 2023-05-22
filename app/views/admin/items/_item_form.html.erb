@@ -17,7 +17,7 @@
     </div>
     <div class='col-md-6'>
     <div class='form-group'>
-      <%= f.text_field :name, class: 'form-control item_name' %>
+      <%= f.text_field :name, required: true, class: 'form-control item_name' %>
     </div>
     </div>
   </div>
@@ -28,7 +28,7 @@
     </div>
     <div class='col-md-6'>
     <div class='form-group'>
-      <%= f.text_area :description, class: 'form-control item_description' %>
+      <%= f.text_area :description, required: true, class: 'form-control item_description' %>
     </div>
     </div>
   </div>
@@ -39,7 +39,7 @@
     </div>
     <div class='col-md-6'>
     <div class='form-group'>
-      <%= f.collection_select :genre_id, Genre.all, :id, :name, {include_blank: '--選択して下さい--'}, class: 'form-control item_genre' %>
+      <%= f.collection_select :genre_id, Genre.all, :id, :name, {include_blank: '--選択して下さい--'}, required: true, class: 'form-control item_genre' %>
     </div>
     </div>
   </div>
@@ -50,7 +50,7 @@
     </div>
     <div class='col-md-5'>
       <div class='form-group'>
-        <%= f.number_field :price, class: 'form-control item_price' %>
+        <%= f.number_field :price, required: true, class: 'form-control item_price' %>
       </div>
     </div>
     <div class='col-md-1 d-flex align-items-center'>
