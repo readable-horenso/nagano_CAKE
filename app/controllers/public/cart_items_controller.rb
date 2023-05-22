@@ -2,12 +2,23 @@ class Public::CartItemsController < ApplicationController
 
   def index
     @cart_items = CartItem.where(customer_id: current_customer.id)
+    @total = 0
   end
 
   def create
     @cart_item = current_customer.cart_items.new(cart_item_params)
-    @cart_item.save
-    redirect_to cart_items_path
+    if CartItem.find_by(item_id: params[:cart_item][:item_id]).present?
+      cart_item = CartItem.find_by(item_id: params[:cart_item][:item_id])
+      # cart_itemの数量にプラス
+      cart_item.quantity += params[:cart_item][:quantity].to_i
+      # cart_itemの情報をアップデート
+      cart_item.update(quantity: cart_item.quantity)
+      # cart_item.update_cart_item(quantity: params[:cart_item][:quantity])
+      redirect_to cart_items_path
+    else
+      @cart_item.save
+      redirect_to cart_items_path
+    end
   end
 
   def update
@@ -24,6 +35,7 @@ class Public::CartItemsController < ApplicationController
 
   def destroy_all
     @cart_items = CartItem.where(customer_id: current_customer.id)
+
     @cart_items.destroy_all
     redirect_to cart_items_path
   end
