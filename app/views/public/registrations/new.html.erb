@@ -9,23 +9,23 @@
     
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 　　
-　<form class="form-horizontal">　
+　<form>　
     <div class="row mb-3 form-group">
       <label class="col col-form-label">お名前</label>
-        <span>姓</span>&nbsp;
+        <span>（姓）</span>&nbsp;
         <div class="col-sm-9">
           <%= f.text_field :family_name, placeholder: "令和", required: true %>
-            <span>名</span>&nbsp;
+            <span>（名）</span>&nbsp;
             <%= f.text_field :given_name, placeholder: "道子", required: true %>
         </div>
     </div>
     
     <div class="row mb-3 form-group">
       <label class="col col-form-label">フリガナ</label>
-        <span>セイ</span>&nbsp;
+        <span>（セイ）</span>&nbsp;
         <div class="col-sm-9">
           <%= f.text_field :family_name_kana, placeholder: "レイワ", required: true %>
-            <span>メイ</span>&nbsp;
+            <span>（メイ）</span>&nbsp;
             <%= f.text_field :given_name_kana, placeholder: "ミチコ", required: true %>
         </div>
     </div>
