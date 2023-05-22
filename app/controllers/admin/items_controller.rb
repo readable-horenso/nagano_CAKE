@@ -16,7 +16,7 @@ class Admin::ItemsController < ApplicationController
       flash[:success] = '商品が新規登録されました'
       redirect_to admin_items_path
     else
-      flash.now[:danger] = "全て入力してください"
+      flash.now[:danger] = "画像ファイルを選択してください"
       render :new
     end
   end
