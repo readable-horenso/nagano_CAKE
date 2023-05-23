@@ -1,8 +1,8 @@
 class Admin::OrderDetailsController < ApplicationController
 
   def update
-    @order = Order.find(params[:id])
     @order_detail = OrderDetail.find(params[:id])
+    @order = @order_detail.order
     @order_details = @order.order_details.all
 
     # 制作ステータスが全て「製作完了」かを確認する変数
