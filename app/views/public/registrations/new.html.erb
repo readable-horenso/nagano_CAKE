@@ -3,13 +3,13 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <div class="mb-5 nav">
+      <div class="mb-2 nav">
         <h3>新規会員登録</h3>
       </div>
-    
+
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-　　
-　<form>　
+
+　<form>
     <div class="row mb-3 form-group">
       <label class="col col-form-label">お名前</label>
         <span>（姓）</span>&nbsp;
@@ -19,7 +19,7 @@
             <%= f.text_field :given_name, placeholder: "道子", required: true %>
         </div>
     </div>
-    
+
     <div class="row mb-3 form-group">
       <label class="col col-form-label">フリガナ</label>
         <span>（セイ）</span>&nbsp;
@@ -29,21 +29,21 @@
             <%= f.text_field :given_name_kana, placeholder: "ミチコ", required: true %>
         </div>
     </div>
-    
+
     <div class="row form-group">
         <label class="col col-form-label">メールアドレス</label>
         <div class="col-sm-9">
           <%= f.email_field :email, :size=>40, placeholder: "sample@example.com", required: true %>
         </div>
     </div>
-    
+
     <div class="row form-group">
         <label class="col col-form-label">郵便番号</label>
         <div class="col-sm-9">
           <%= f.text_field :postcode, placeholder: "0000000", required: true %>
         </div>
     </div>
-    
+
     <div class="row form-group">
         <label class="col col-form-label">住所</label>
         <div class="col-sm-9">
@@ -57,7 +57,7 @@
     <%= f.text_field :phone_number, placeholder: "000000000", required: true %>
     </div>
   </div>
-  
+
   <div class="row form-group">
     <label class="col col-form-label">パスワード
       <% if @minimum_password_length %>
@@ -68,25 +68,23 @@
       <%= f.password_field :password, required: true %>
     </div>
   </div>
-  
+
   <div class="row form-group">
     <label class="col col-form-label">パスワード（確認用）</label>
     <div class="col-sm-9">
       <%= f.password_field :password_confirmation, required: true %>
     </div>
   </div>
-  
+
   <div class="text-center my-3 col-8 form-group">
     <%= f.submit "新規登録", class: "btn btn-success" %>
   </div>
   </form>
   <% end %>
 
-  <div class="nav">
-      <h3>既に登録済みの方</h3>
-  </div>
+ <h3>既に登録済みの方</h3>
   <div class="row">
-    <div class="h4 col-7 mb-3 mx-auto">
+    <div class="h5 col-10 mx-auto my-3">
       <%= render "public/shared/links" %>
     </div>
   </div>

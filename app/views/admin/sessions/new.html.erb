@@ -1,7 +1,14 @@
-<div class="alert alert-info">
-  <%= alert %>
-  <%= notice %>
-</div>
+<% if notice %>
+  <div class="alert alert-success">
+    <%= notice %>
+  </div>
+<% end %>
+
+<% if alert %>
+  <div class="alert alert-danger">
+    <%= alert %>
+  </div>
+<% end %>
 
 <div class="container">
   <h4>管理者ログイン</h4>
@@ -10,13 +17,13 @@
       <div class="row justify-content-center form-group ">
         <label class="col-2 col-form-label">メールアドレス</label>
         <div class="col-4">
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", size: "40" %>
         </div>
       </div>
       <div class="row justify-content-center form-group">
         <label class="col-2 col-form-label">パスワード</label>
         <div class="col-4">
-          <%= f.password_field :password, autocomplete: "current-password" %>
+          <%= f.password_field :password, autocomplete: "current-password", size: "40" %>
         </div>
         </div>
       <div class="row justify-content-center form-group">

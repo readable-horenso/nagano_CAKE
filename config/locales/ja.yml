@@ -137,7 +137,7 @@
       sessions:
         already_signed_out: 既にログアウト済みです。
         new:
-          sign_in: ログイン
+        sign_in: ログイン
         signed_in: ログインしました。
         signed_out: ログアウトしました。
       shared:
