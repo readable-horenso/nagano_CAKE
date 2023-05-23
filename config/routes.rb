@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+
   scope module: :public do
     resource :customers, only: [:update]
+    resources :genres, only: [:show]
   end
   
     # 顧客用
