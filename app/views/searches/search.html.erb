@@ -9,12 +9,11 @@
         <th>Name</th>
       </tr>
     </thead>
-    <!--検索対象モデルがBookの時 -->
     <tbody>
-      <% @items.each do |book| %>
+      <% @records.each do |item| %>
         <tr>
           <td></td>
-          <td><%= book.name %></td>
+          <td><%= item.name %></td>
         </tr>
       <% end %>
     </tbody>
