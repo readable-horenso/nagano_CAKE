@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   scope module: :public do
     resource :customers, only: [:update]
   end
-  
+
     # 顧客用
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -49,13 +49,15 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :orders, only: [:show, :update]
-    resources :customers, only: [:index, :show, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update] do
+      get "orderlist" => "customers#orderlist", as: "orderlist"
+    end
     resources :genres, only: [:index, :edit, :create, :update]
     resources :items, only: [:new, :index, :show, :edit, :create, :update]
     resources :order_details, only: [:update]
     root to: "homes#top"
   end
-  
+
   get "search" => "searches#search"
-  
+
 end

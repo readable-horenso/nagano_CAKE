@@ -1,5 +1,5 @@
 class Admin::CustomersController < ApplicationController
-  
+
   def index
     @customers = Customer.page(params[:page]).per(10)
   end
@@ -22,11 +22,17 @@ class Admin::CustomersController < ApplicationController
       render "edit"
     end
   end
-  
+
+  def orderlist
+    @customer = Customer.find(params[:customer_id])
+    @orders = @customer.orders.all
+    @orders = @customer.orders.all.order(created_at: :desc)
+  end
+
   private
-  
+
   def customer_params
     params.require(:customer).permit(:family_name, :given_name, :family_name_kana, :given_name_kana, :postcode, :address, :phone_number, :email, :is_deleted )
   end
-  
+
 end
