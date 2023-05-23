@@ -1,0 +1,21 @@
+<h2>
+  search for "<%= @word %>"
+</h2>
+
+<table class="table table-hover table-inverse">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <!--検索対象モデルがBookの時 -->
+    <tbody>
+      <% @items.each do |book| %>
+        <tr>
+          <td></td>
+          <td><%= book.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+</table>
