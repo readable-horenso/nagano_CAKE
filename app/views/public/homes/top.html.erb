@@ -1,4 +1,14 @@
-<%= flash[:withdraw] %>
+<% if notice %>
+  <div class="alert alert-success">
+    <%= notice %>
+  </div>
+<% end %>
+
+<% if info %>
+<div>
+  <%= render 'layouts/flash_message' %>
+</div>
+<% end %>
 
 <div class="container">
   <div class="row" >
