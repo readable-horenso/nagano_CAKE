@@ -13,6 +13,10 @@
 <div class="container">
   <div class="row" >
     <!-- ここにジャンル検索の部分テンプレートを入れる -->
+    <div class="col-2">
+      <%= render "public/genres/lists",  genres: @genres %>
+    </div>
+    
     <div class="col-md-8 offset-md-1">
       <div class="card">
         <!-- 写真は自由に変えていいです-->

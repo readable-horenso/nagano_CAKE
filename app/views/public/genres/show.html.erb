@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-3">
+      <%= render "lists", genres: @genres %>
+    </div>
+    <div class="col-7">
+      <h3 class="font-weight-bold"><%= @genre.name %>一覧</h3>
+      <p>（全<%= @genre.items.count %>件）</p>
+
+      <div class="row">
+        <% @genre.items.each do |item| %>
+          <div class="col justify-content-md-center">
+            <div class="p-3">
+              <div>
+                <%= link_to item_path(item) do %>
+                  <% if item.image.attached? %>
+                    <%= image_tag item.image, size: "200x150", class: "rounded shadow" %></br>
+                   <% end %>
+                  <%= item.name %>
+                 <% end %>
+              </div>
+              <div>￥<%= item.price.to_s(:delimited) %></div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
