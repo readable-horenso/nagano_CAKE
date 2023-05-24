@@ -25,8 +25,7 @@ class Admin::CustomersController < ApplicationController
 
   def orderlist
     @customer = Customer.find(params[:customer_id])
-    @orders = @customer.orders.all
-    @orders = @customer.orders.all.order(created_at: :desc)
+    @orders = @customer.orders.all.order(created_at: :desc).page(params[:page])
   end
 
   private

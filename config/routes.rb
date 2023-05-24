@@ -62,9 +62,6 @@ Rails.application.routes.draw do
     root to: "homes#top"
   end
 
-<<<<<<< HEAD
   get "search" => "searches#search"
 
-=======
->>>>>>> origin/develop
 end
