@@ -9,8 +9,14 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
-    @order_details = @order.order_details.all
+    @order = Order.find_by(id: params[:id])
+    if @order.nil?
+      flash[:danger] = "リロードしたため元の画面に遷移しました"
+      redirect_to request.referer
+    else
+      @order = Order.find_by(params[:id])
+      @order_details = @order.order_details.all
+    end
   end
 
   def create
