@@ -8,6 +8,8 @@ class CartItem < ApplicationRecord
   #   update(quantity: self.quantity)
   # end
 
+  validates :quantity, presence: true
+  validates :item_id, presence: true
   # 小計を求めるメソッド
   def subtotal
     item.with_tax_price * quantity

@@ -1,13 +1,13 @@
-<div class="containar">
+<div class="container-fluid">
   <div class="row justify-content-md-center">
 
-    <div class="col-2">
+    <div class="col-2 mx-3">
       <!--ジャンル検索-->
       <%= render "public/genres/lists", genres: @genres %>
 
     </div>
 
-    <div class="col-9">
+    <div class="col-9 mx-3">
 
       <h3 class="d-inline font-weight-bold">商品一覧</h3>
       <span>(全<%= @items.count %>件)</span>
