@@ -54,7 +54,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :orders, only: [:show, :update]
-    resources :customers, only: [:index, :show, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update] do
+      get "orderlist" => "customers#orderlist", as: "orderlist"
+    end
     resources :genres, only: [:index, :edit, :create, :update]
     resources :items, only: [:new, :index, :show, :edit, :create, :update]
     resources :order_details, only: [:update]

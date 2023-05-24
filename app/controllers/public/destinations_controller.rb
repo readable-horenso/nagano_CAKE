@@ -1,7 +1,7 @@
 class Public::DestinationsController < ApplicationController
 
   def index
-    @destinations = current_customer.destinations
+    @destinations = current_customer.destinations.page(params[:page])
     @destination = Destination.new
   end
 
