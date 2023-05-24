@@ -1,8 +1,6 @@
 <!--ヘッダーのパーシャル-->
 
-<div>
   <%= render 'layouts/flash_message' %>
-</div>
 
 <div class='container'>
   <div class='row justify-content-center'>
@@ -51,7 +49,7 @@
       </table>
 
       <div class='row justify-content-center'>
-        <%= paginate @items %>
+        <%= paginate @items, theme: 'twitter-bootstrap-4' %>
       </div>
 
     </div>
