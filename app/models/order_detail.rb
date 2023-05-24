@@ -10,12 +10,4 @@ class OrderDetail < ApplicationRecord
     production_complete: 3
   }
 
-  def self.statuses_i18n
-  {
-    "cannot_start" => "着手不可",
-    "production_pending" => "製作待ち",
-    "in_production" => "製作中",
-    "production_complete" => "製作完了"
-  }
-  end
 end
