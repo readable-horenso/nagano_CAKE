@@ -71,8 +71,7 @@ class Public::OrdersController < ApplicationController
         @order.address = params[:order][:address]
         @order.name = params[:order][:name]
       end
-    # else
-    #   render "new"
+      
     end
 
     @cart_items = current_customer.cart_items.all
