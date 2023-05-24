@@ -1,20 +1,36 @@
-<h2>
-  search for "<%= @word %>"
-</h2>
+<div class="containar">
+  <div class="row justify-content-md-center">
 
-<table class="table table-hover table-inverse">
-    <thead>
-      <tr>
-        <th></th>
-        <th>Name</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @records.each do |item| %>
-        <tr>
-          <td></td>
-          <td><%= item.name %></td>
-        </tr>
-      <% end %>
-    </tbody>
-</table>
+    <div class="col-3">
+      <!--ジャンル検索-->
+    </div>
+
+    <div class="col-7">
+
+
+      <h3 class="font-weight-bold">" <%= @word %> " の検索結果</h3>
+      <p>(全<%= @records.count %>件)</p>
+
+      <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+
+        <% @records.each do |item| %>
+          <div class="col justify-content-md-center">
+            <div class="p-3">
+              <div>
+                <%= link_to item_path(item) do %>
+                  <% if item.image.attached? %>
+                    <%= image_tag item.image, size: "200x150", class: "rounded shadow" %></br>
+                  <% end %>
+                    <%= item.name %>
+                <% end %>
+              </div>
+              <div>￥<%= item.price.to_s(:delimited) %></div>
+            </div>
+          </div>
+        <% end %>
+
+      </div>
+
+    </div>
+  </div>
+</div>
