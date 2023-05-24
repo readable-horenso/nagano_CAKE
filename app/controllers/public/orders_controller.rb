@@ -50,11 +50,28 @@ class Public::OrdersController < ApplicationController
 
     #　新規住所入力の場合
     elsif params[:order][:address_option] == "2"
-      @order.postcode = params[:order][:postcode]
-      @order.address = params[:order][:address]
-      @order.name = params[:order][:name]
-    else
-      render "new"
+      if params[:order][:postcode] == "" && params[:order][:address] == "" && params[:order][:name] == ""
+              flash[:danger] = "新しいお届け先が全て入力されていません"
+              redirect_to request.referer
+              
+      elsif params[:order][:postcode] == ""
+            flash[:danger] = "郵便番号が入力されていません"
+            redirect_to request.referer
+            
+      elsif params[:order][:address] == ""
+            flash[:danger] = "住所が入力されていません"
+            redirect_to request.referer
+            
+      elsif params[:order][:name] == ""
+            flash[:danger] = "宛名が入力されていません"
+            redirect_to request.referer
+            
+      else
+        @order.postcode = params[:order][:postcode]
+        @order.address = params[:order][:address]
+        @order.name = params[:order][:name]
+      end
+      
     end
 
     @cart_items = current_customer.cart_items.all
