@@ -1,8 +1,22 @@
-<%= flash[:withdraw] %>
+<% if notice %>
+  <div class="alert alert-success">
+    <%= notice %>
+  </div>
+<% end %>
+
+<% if info %>
+<div>
+  <%= render 'layouts/flash_message' %>
+</div>
+<% end %>
 
 <div class="container">
   <div class="row" >
     <!-- ここにジャンル検索の部分テンプレートを入れる -->
+    <div class="col-2">
+      <%= render "public/genres/lists",  genres: @genres %>
+    </div>
+    
     <div class="col-md-8 offset-md-1">
       <div class="card">
         <!-- 写真は自由に変えていいです-->
