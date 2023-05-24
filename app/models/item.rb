@@ -25,7 +25,7 @@ class Item < ApplicationRecord
   end
 
   def self.looks(word)
-    Item.where('name LIKE?', "#{word}" )
+    Item.where('name LIKE?', "%#{word}%" )
   end
 
 end
