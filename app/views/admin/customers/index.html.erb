@@ -45,8 +45,12 @@
             <% end %>
           </tbody>
         </table>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <%= paginate @customers, class: "page-link" %>
+          </ul>
+        </nav>
       </div>
-
     </div>
   </div>
 </div>

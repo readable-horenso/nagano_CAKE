@@ -1,9 +1,9 @@
-<header class="shadow-sm mb-5">
+<header class="shadow-sm">
   <nav class="navbar navbar-expand-lg">
     <div class="container">
 
 
-      <!-- ロゴ　-->
+      <!-- ロゴ-->
       <div class="border navbar-brand">
         <% if admin_signed_in? %>
           <%= link_to "nagano CAKE", admin_root_path, class: "mx-2" %>
@@ -66,12 +66,15 @@
             </li>
           <% end %>
         </ul>
-
+        
         <!-- 検索フォーム-->
-        <form class="form-inline my-2 float-right">
-          <input class="form-control mr-sm-2" type="search" placeholder="検索" aria-label="Search">
-          <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">検索</button>
-        </form>
+        <div class="form-inline my-2 float-right">
+          <%= form_with url: search_path, method: :get, local: true do |f| %>
+            <%= f.text_field :word, placeholder: "商品名を検索", class: "form-control" %>
+            <span><%= f.submit "検索", class: "btn btn-outline-primary my-2 my-sm-0" %></span>
+          <% end %>
+        </div>
+        
       </div>
     </div>
   </nav>

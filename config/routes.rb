@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+
+  get "searches/search" => "searches#search", as: "search"
+
   scope module: :public do
     resource :customers, only: [:update]
+    resources :genres, only: [:show]
   end
 
     # 顧客用
@@ -58,6 +62,9 @@ Rails.application.routes.draw do
     root to: "homes#top"
   end
 
+<<<<<<< HEAD
   get "search" => "searches#search"
 
+=======
+>>>>>>> origin/develop
 end
