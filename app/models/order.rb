@@ -15,4 +15,14 @@ class Order < ApplicationRecord
       preparing_delivery: 3,
       delivered: 4
   }
+  
+  def self.statuses_i18n
+  {
+    "payment_waiting" => "入金待ち",
+    "payment_confirmation" => "入金確認",
+    "in_production" => "製作中",
+    "preparing_delivery" => "発送準備中",
+    "production_complete" => "製作完了"
+  }
+  end
 end

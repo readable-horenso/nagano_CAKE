@@ -1,0 +1,61 @@
+<div class="containar">
+  <div class="row justify-content-md-center">
+
+    <div class="col-3">
+      <!--ジャンル検索-->
+      <% if customer_signed_in? %>
+        <%= render "public/genres/lists", genres: @genres %>
+      <% end %>
+    </div>
+
+    <div class="col-7">
+
+
+      <h3 class="font-weight-bold">" <%= @word %> " の検索結果</h3>
+      <p>(全<%= @records.count %>件)</p>
+
+      <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+
+        <% @records.each do |item| %>
+          <div class="col justify-content-md-center">
+            <div class="p-3">
+              <div>
+                <% if customer_signed_in? %>
+                  <%= link_to item_path(item) do %>
+                    <% if item.image.attached? %>
+                      <%= image_tag item.image, size: "200x150", class: "rounded shadow" %></br>
+                    <% end %>
+                      <%= item.name %>      
+                  <% end %>
+                <% elsif admin_signed_in? %>
+                  <%= link_to admin_item_path(item) do %>
+                    <% if item.image.attached? %>
+                      <%= image_tag item.image, size: "200x150", class: "rounded shadow" %></br>
+                    <% end %>
+                      <%= item.name %>      
+                  <% end %>
+                <% else %>
+                  <%= link_to item_path(item) do %>
+                    <% if item.image.attached? %>
+                      <%= image_tag item.image, size: "200x150", class: "rounded shadow" %></br>
+                    <% end %>
+                      <%= item.name %>      
+                  <% end %>
+                <% end %>
+              </div>
+              <div>￥<%= item.price.to_s(:delimited) %></div>
+            </div>
+          </div>
+        <% end %>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<% if @records.empty? %>
+  <div class="h4 text-center">
+    <ins><p>🙇 該当する商品はありません 🙇</p>
+  </div>
+<% end %>
