@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
+  get "searches/search" => "searches#search", as: "search"
+
   scope module: :public do
     resource :customers, only: [:update]
     resources :genres, only: [:show]
   end
-  
+
     # 顧客用
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -57,7 +59,5 @@ Rails.application.routes.draw do
     resources :order_details, only: [:update]
     root to: "homes#top"
   end
-  
-  get "search" => "searches#search"
-  
+
 end
