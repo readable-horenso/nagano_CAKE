@@ -14,7 +14,7 @@ class Admin::ItemsController < ApplicationController
     @item = Item.new(item_params)
     if  @item.save
       flash[:success] = '商品が新規登録されました'
-      redirect_to admin_items_path
+      redirect_to admin_item_path(@item)
     else
       flash.now[:danger] = "画像ファイルを選択してください"
       render :new

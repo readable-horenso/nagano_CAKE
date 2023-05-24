@@ -32,10 +32,10 @@
     <div class="col-3">
       <table class="table table-bordered border-dark">
         <% @order.postage = 800 %>
-        <tr><th class="tabel-secondary">送料</th><td><%= @order.postage %></td></tr>
-        <tr><th class="tabel-secondary">商品合計</th><td><%= total.to_i %></td></tr>
+        <tr><th class="tabel-secondary">送料</th><td><%= @order.postage %>円</td></tr>
+        <tr><th class="tabel-secondary">商品合計</th><td><%= total.to_s(:delimited) %>円</td></tr>
         <% @order.total_amount = @order.postage + total.to_i %>
-        <tr><th class="tabel-secondary">請求金額</th><td><%= @order.total_amount %></td></tr>
+        <tr><th class="tabel-secondary">請求金額</th><td><%= @order.total_amount.to_s(:delimited) %>円</td></tr>
       </table>
     </div>
   </div>
