@@ -1,14 +1,25 @@
+<!--フラッシュメッセージの部分テンプレート-->
+<%= render 'layouts/flash_message' %>
+
 <div class="container">
+
   <div class="row align-items-center">
-    <h3 class="col">ショッピングカート</h3>
+    <h3 class="col font-weight-bold">ショッピングカート</h3>
+  </div>
+
+<% if @cart_items.present? %>
 
     <!--カートを空にするボタン-->
-    <div class="col text-right"><%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, class: "btn btn-danger" %></div>
+  <div class="row align-items-end mb-2">
+    <div class="col text-right">
+      <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, data: { confirm: "カート内商品を全て削除しますか？" }, class: "btn btn-sm btn-danger" %>
+    </div>
   </div>
 
     <table class="table">
+
       <thead>
-        <tr>
+        <tr class="align-items-center">
           <th></th>
           <th>商品名</th>
           <th>単価(税込)</th>
@@ -17,6 +28,7 @@
           <th></th>
         </tr>
       </thead>
+
       <tbody>
 
       <% @cart_items.each do |cart_item| %>
@@ -42,7 +54,7 @@
           <td class="form-inline">
             <%= f.select :quantity, [*1..10], {}, required: true, class: "form-control mr-3" %>
             <%= f.hidden_field :item_id, value: cart_item.item_id %>
-            <%= f.submit "変更", method: :patch, class: "btn btn-success" %>
+            <%= f.submit "変更", method: :patch, class: "btn btn-sm btn-success" %>
           </td>
         <% end %>
 
@@ -51,7 +63,7 @@
 
           <!--cart_itemごとの削除ボタン-->
           <td>
-            <%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %>
+            <%= link_to "削除する", cart_item_path(cart_item), method: :delete, data: { confirm: "#{cart_item.item.name}をカート内から削除しますか？" }, class: "btn btn-sm btn-danger" %>
           </td>
           <!--それぞれに合計金額を出すための処理-->
           <% @total += cart_item.subtotal %>
@@ -62,14 +74,23 @@
     </table>
 
   <div class="row justify-content-end font-weight-bold lead">
-    <div class="mr-3">合計金額</div>
-    <span><%= @total.to_s(:delimited) %> 円</span>
+    <div class="col-2">合計金額</div>
+    <span class="col-2"><%= @total.to_s(:delimited) %> 円</span>
+    <div class="col-3 text-right">
+      <div>
+        <%= link_to "情報入力に進む", new_order_path, class: "btn btn-md btn-success" %>
+      </div>
+    </div>
   </div>
 
+<% else %>
+<div class="row mt-5">
+  <h4 class="col-5 mr-2">カート内は空です</h4>
+</div>
+<% end %>
 
-  <div class="row text-center">
-    <div class="col-4"><%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %></div>
-    <div class="col-4"><%= link_to "情報入力に進む", new_order_path, class: "btn btn-success" %></div>
+  <div class="row mt-5">
+    <div class="col-6"><%= link_to "買い物を続ける", root_path, class: "btn btn-md btn-primary" %></div>
   </div>
 
 </div>
