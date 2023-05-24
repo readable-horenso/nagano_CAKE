@@ -1,5 +1,7 @@
 class Public::CartItemsController < ApplicationController
 
+  before_action :authenticate_customer!
+
   def index
     @cart_items = CartItem.where(customer_id: current_customer.id)
     @total = 0
@@ -14,9 +16,11 @@ class Public::CartItemsController < ApplicationController
       # cart_itemの情報をアップデート
       cart_item.update(quantity: cart_item.quantity)
       # cart_item.update_cart_item(quantity: params[:cart_item][:quantity])
+      flash[:success] = "カート内商品の個数が変更されました"
       redirect_to cart_items_path
     else
       @cart_item.save
+      flash[:success] = "商品がカートに入りました"
       redirect_to cart_items_path
     end
   end
@@ -24,6 +28,7 @@ class Public::CartItemsController < ApplicationController
   def update
     @cart_item = CartItem.find(params[:id])
     @cart_item.update(cart_item_params)
+    flash[:success] = "カート内商品の個数が変更されました"
     redirect_to cart_items_path
   end
 
@@ -45,6 +50,5 @@ class Public::CartItemsController < ApplicationController
   def cart_item_params
     params.require(:cart_item).permit(:item_id, :quantity)
   end
-
 
 end

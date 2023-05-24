@@ -1,13 +1,13 @@
-<div class="container">
-  <div class="row">
+<div class="container-fluid">
+  <div class="row justify-content-md-center">
 
-    <div class="col-3">
-
-    <!--ジャンル-->
+    <div class="col-2 mx-3">
+      <!--ジャンル検索-->
+      <%= render "public/genres/lists", genres: @genres %>
 
     </div>
 
-    <div class="col-9">
+    <div class="col-9 mx-3">
 
       <div class="row media">
         <div><%= image_tag @item.image, size: "400x300", class: "mr-3" %></div>
