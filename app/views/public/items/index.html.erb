@@ -1,37 +1,48 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
-
 <div class="containar">
   <div class="row justify-content-md-center">
 
     <div class="col-3">
-      <!--ジャンル検索-->
+
+      <!--ジャンル-->
+
     </div>
 
-    <div class="col-7">
+    <div class="col-9">
 
 
-      <h3 class="font-weight-bold">商品一覧</h3>
-      <p>(全<%= @items.count %>件)</p>
+      <h3 class="d-inline font-weight-bold">商品一覧</h3>
+      <span>(全<%= @items.count %>件)</span>
 
-      <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
 
-        <% @items.each do |item| %>
-          <div class="col justify-content-md-center">
-            <div class="p-3">
-              <div>
-                <%= link_to item_path(item) do %>
-                  <% if item.image.attached? %>
-                    <%= image_tag item.image, size: "200x150", class: "rounded shadow" %></br>
-                  <% end %>
-                    <%= item.name %>
+      <div class="row">
+      <% @items.each do |item| %>
+        <div class="col d-flex justify-content-center text-center">
+          <div class="p-3">
+            <div>
+              <%= link_to item_path(item) do %>
+                <% if item.image.attached? %>
+                  <!--商品画像-->
+                  <div><%= image_tag item.image, size: "225x150", class: "rounded" %></div>
                 <% end %>
-              </div>
-              <div>￥<%= item.price.to_s(:delimited) %></div>
+                  <!--商品名-->
+                  <div><%= item.name %></div>
+              <% end %>
             </div>
-          </div>
-        <% end %>
 
+            <% if item.is_valid %>
+            <span class='text-success font-weight-bold'>
+              <%= '販売中' %>
+            </span>
+            <% else %>
+            <span class='text-secondary font-weight-bold'>
+              <%= '売切れ' %>
+            </span>
+            <% end %>
+
+            <div>￥<%= item.price.to_s(:delimited)%></div>
+          </div>
+        </div>
+      <% end %>
       </div>
 
       <div class="row justify-content-center">
