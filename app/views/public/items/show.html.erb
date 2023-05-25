@@ -15,16 +15,15 @@
         <div class="media-body">
 
         <% if @item.is_valid %>
-          <h3 class="d-inline font-weight-bold"><%= @item.name %></h3>
-
+          <h3 class="font-weight-bold mb-3"><%= @item.name %></h3>
         <% else %>
-          <h3 class="font-weight-bold"><%= @item.name %>  <span class="badge badge-secondary">売切れ</span></h3>
+          <h3 class="font-weight-bold mb-3"><%= @item.name %>  <span class="badge badge-secondary">売切れ</span></h3>
         <% end %>
 
           <p class="h5 mb-5"><%= @item.description %></p>
-
           <h4 class="d-inline"><%= @item.with_tax_price.to_s(:delimited) %>円</h4>
           <span>(税込)</span>
+
         </div>
       </div>
 

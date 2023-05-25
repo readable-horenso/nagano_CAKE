@@ -1,28 +1,48 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-3">
+<div class="container-fluid">
+  <div class="row justify-content-md-center">
+
+    <div class="col-2 mx-3">
+
       <%= render "lists", genres: @genres %>
+
     </div>
-    <div class="col-7">
-      <h3 class="font-weight-bold"><%= @genre.name %>一覧</h3>
-      <p>（全<%= @genre.items.count %>件）</p>
+
+    <div class="col-9 mx-3">
+
+      <h3 class="d-inline font-weight-bold"><%= @genre.name %> 一覧</h3>
+      <span>(全<%= @genre.items.count %>件)</span>
 
       <div class="row">
-        <% @genre.items.each do |item| %>
-          <div class="col justify-content-md-center">
-            <div class="p-3">
-              <div>
-                <%= link_to item_path(item) do %>
-                  <% if item.image.attached? %>
-                    <%= image_tag item.image, size: "200x150", class: "rounded shadow" %></br>
-                   <% end %>
-                  <%= item.name %>
-                 <% end %>
-              </div>
-              <div>￥<%= item.price.to_s(:delimited) %></div>
+      <% @genre.items.each do |item| %>
+        <div class="col d-flex justify-content-md-center text-center">
+          <div class="p-3">
+
+            <div>
+              <%= link_to item_path(item) do %>
+              <% if item.image.attached? %>
+                <!--商品画像-->
+                <div><%= image_tag item.image, size: "200x150", class: "rounded" %></div>
+              <% end %>
+                <!--商品名-->
+                <div><%= item.name %></div>
+              <% end %>
             </div>
+
+            <% if item.is_valid %>
+            <span class="text-success font-weight-bold">
+              <%= "販売中" %>
+            </span>
+            <% else %>
+            <span class="text-secondary font-weight-bold">
+              <%= "売切れ" %>
+            </span>
+            <% end %>
+
+            <div>￥<%= item.price.to_s(:delimited) %></div>
+
           </div>
-        <% end %>
+        </div>
+      <% end %>
       </div>
 
     </div>

@@ -10,14 +10,14 @@
 </div>
 <% end %>
 
-<div class="container">
-  <div class="row" >
+<div class="container-fluid">
+  <div class="row justify-content-md-center">
     <!-- ここにジャンル検索の部分テンプレートを入れる -->
-    <div class="col-2">
+    <div class="col-2 mx-3">
       <%= render "public/genres/lists",  genres: @genres %>
     </div>
-    
-    <div class="col-md-8 offset-md-1">
+
+    <div class="col-9 mx-3">
       <div class="card">
         <!-- 写真は自由に変えていいです-->
         <%= image_tag "no_image.jpg", class: "card-img" %>

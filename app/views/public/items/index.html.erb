@@ -9,22 +9,24 @@
 
     <div class="col-9 mx-3">
 
-      <h3 class="d-inline font-weight-bold">商品一覧</h3>
-      <span>(全<%= @items.count %>件)</span>
+      <h3 class="font-weight-bold">商品一覧</h3>
+      <span>(全<%= @items_counts %>件)</span>
 
       <div class="row">
       <% @items.each do |item| %>
         <div class="col d-flex justify-content-center text-center">
           <div class="p-3">
             <div>
-              <%= link_to item_path(item) do %>
-                <% if item.image.attached? %>
-                  <!--商品画像-->
-                  <div><%= image_tag item.image, size: "225x150", class: "rounded" %></div>
-                <% end %>
-                  <!--商品名-->
-                  <div><%= item.name %></div>
-              <% end %>
+            <%= link_to item_path(item) do %>
+
+            <% if item.image.attached? %>
+              <div><%= image_tag item.image, size: "225x150", class: "rounded" %></div>
+            <% end %>
+
+              <!--商品名-->
+              <div><%= item.name %></div>
+
+            <% end %>
             </div>
 
             <% if item.is_valid %>
@@ -38,6 +40,7 @@
             <% end %>
 
             <div>￥<%= item.price.to_s(:delimited)%></div>
+
           </div>
         </div>
       <% end %>
