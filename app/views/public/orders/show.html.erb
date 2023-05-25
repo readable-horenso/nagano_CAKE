@@ -40,7 +40,7 @@
           </tr>
           <tr>
             <td>ご請求額</td>
-            <td>¥<%= @order.total_amount %></td>
+            <td>¥<%= @order.total_amount.to_s(:delimited) %></td>
           </tr>
         </tbody>
       </table>
