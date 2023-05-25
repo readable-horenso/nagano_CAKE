@@ -12,22 +12,36 @@
 
 <div class="container">
   <div class="row" >
-    <!-- ここにジャンル検索の部分テンプレートを入れる -->
     <div class="col-2">
       <%= render "public/genres/lists",  genres: @genres %>
     </div>
-    
+
     <div class="col-md-8 offset-md-1">
-      <div class="card">
-        <!-- 写真は自由に変えていいです-->
-        <%= image_tag "no_image.jpg", class: "card-img" %>
-        <div class="card-img-overlay d-flex align-items-center justify-content-center">
-          <p>ようこそ、NaganoCakeへ！<br>
+      <!-- スライドショーの記述 -->
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+             <%= image_tag "ケーキ屋.jpg", size: "600×600", class:"slide-image" %>
+          </div>
+          <div class="swiper-slide">
+             <%= image_tag "ラテ.jpg", size: "600×600", class:"slide-image" %>
+          </div>
+          <div class="swiper-slide">
+             <%= image_tag "チーズクリーム.jpg", size: "600×600", class:"slide-image" %>
+          </div>
+          <div class="swiper-slide">
+             <%= image_tag "フランボワーズラズベリー.jpg", size: "600×600", class:"slide-image" %>
+          </div>
+        </div>
+        <div class="caption">
+          ようこそ、NaganoCakeへ！<br>
           このサイトは、ケーキ販売のECサイトになります。<br>
           会員でない方も商品の閲覧はできますが、<br>
           購入には会員登録が必要になります。<br>
-          </p>
         </div>
+
+        <div class="swiper-pagination"></div>
+
       </div>
       <h1>新着商品</h1>
       <div class="row">
