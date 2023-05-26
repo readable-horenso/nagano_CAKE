@@ -1,61 +1,69 @@
-<div class="containar">
+<div class="containar-fluid">
   <div class="row justify-content-md-center">
 
-    <div class="col-3">
+    <div class="col-2 mx-3">
       <!--ジャンル検索-->
       <% if customer_signed_in? %>
         <%= render "public/genres/lists", genres: @genres %>
       <% end %>
     </div>
 
-    <div class="col-7">
-
+    <div class="col-9 mx-3">
 
       <h3 class="font-weight-bold">" <%= @word %> " の検索結果</h3>
-      <p>(全<%= @records.count %>件)</p>
+      <span>(全<%= @records.count %>件)</span>
 
-      <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+      <div class="row">
+      <% @records.each do |item| %>
+        <div class="col justify-content-md-center">
+          <div class="p-3">
+            <div>
+            <% if customer_signed_in? %>
 
-        <% @records.each do |item| %>
-          <div class="col justify-content-md-center">
-            <div class="p-3">
-              <div>
-                <% if customer_signed_in? %>
-                  <%= link_to item_path(item) do %>
-                    <% if item.image.attached? %>
-                      <%= image_tag item.image, size: "200x150", class: "rounded shadow" %></br>
-                    <% end %>
-                      <%= item.name %>      
-                  <% end %>
-                <% elsif admin_signed_in? %>
-                  <%= link_to admin_item_path(item) do %>
-                    <% if item.image.attached? %>
-                      <%= image_tag item.image, size: "200x150", class: "rounded shadow" %></br>
-                    <% end %>
-                      <%= item.name %>      
-                  <% end %>
-                <% else %>
-                  <%= link_to item_path(item) do %>
-                    <% if item.image.attached? %>
-                      <%= image_tag item.image, size: "200x150", class: "rounded shadow" %></br>
-                    <% end %>
-                      <%= item.name %>      
-                  <% end %>
+              <%= link_to item_path(item) do %>
+                <% if item.image.attached? %>
+                  <div><%= image_tag item.image, size: "200x150", class: "rounded" %></div>
                 <% end %>
-              </div>
-              <div>￥<%= item.price.to_s(:delimited) %></div>
-            </div>
-          </div>
-        <% end %>
+                  <div><%= item.name %></div>
+              <% end %>
 
+            <% elsif admin_signed_in? %>
+
+              <%= link_to admin_item_path(item) do %>
+                <% if item.image.attached? %>
+                  <div><%= image_tag item.image, size: "200x150", class: "rounded" %></div>
+                <% end %>
+                  <div><%= item.name %></div>
+              <% end %>
+
+            <% else %>
+
+              <%= link_to item_path(item) do %>
+                <% if item.image.attached? %>
+                  <div><%= image_tag item.image, size: "200x150", class: "rounded" %></div>
+                <% end %>
+                  <div><%= item.name %></div>
+              <% end %>
+
+            <% end %>
+            </div>
+
+            <div>￥<%= item.price.to_s(:delimited) %></div>
+
+          </div>
+        </div>
+      <% end %>
       </div>
+
+      <% if @records.empty? %>
+
+      <div class="h4 text-center">
+        該当する商品はありません。
+        <%= image_tag "_c_choju51_0019_s256_choju51_0019_9.png", size: "100x165", class: "mt-3 mx-auto d-block" %>
+      </div>
+
+      <% end %>
 
     </div>
   </div>
 </div>
-
-<% if @records.empty? %>
-  <div class="h4 text-center">
-    <ins><p>🙇 該当する商品はありません 🙇</p>
-  </div>
-<% end %>
