@@ -1,9 +1,12 @@
+
+
 # 概要
 DMM WEBCAMP「チーム開発フェーズ」課題
 ### 課題の設定
 - クライアントは、長野県にある小さな洋菓子店「ながの CAKE」
 - 商品を通販するためのECサイトの開発をしてほしい
 
+![スクリーンショット 2023-05-27 13 00 54](https://github.com/readable-horenso/nagano_CAKE/assets/129576342/540b89b8-aeca-4152-9d18-6cabdb75916b)
 
 # 開発環境
   cloud9
@@ -18,7 +21,6 @@ DMM WEBCAMP「チーム開発フェーズ」課題
 - kaminari
 - bootstrap4-kaminari-views
 - enum_help
-
 
 # 実装機能
 会員側機能と管理者側機能を実装
