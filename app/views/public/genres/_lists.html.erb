@@ -1,0 +1,18 @@
+<table class="table table-bordered">
+  <thead class="text-center">
+    <tr>
+      <th class="genres">ジャンル一覧</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% genres.each do |genre| %>
+    <tr class="genres text-center">
+      <td>
+        <%= link_to genre_path(genre) do %>
+          <%= genre.name %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

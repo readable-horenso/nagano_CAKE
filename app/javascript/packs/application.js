@@ -8,6 +8,18 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+import "jquery";
+import "popper.js";
+import "bootstrap";
+import "../stylesheets/application"
+import "script.js"
+import Swiper from 'swiper/swiper-bundle.js';  //この行を追記
+import 'swiper/swiper-bundle.css';　//この行を追記
+
+import '@fortawesome/fontawesome-free/js/all'
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+require("jquery")

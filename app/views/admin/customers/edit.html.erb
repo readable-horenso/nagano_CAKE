@@ -1,0 +1,77 @@
+<div class="row">
+    <div class="col-lg-7 px-sm-2 mx-auto">
+      <div class="mb-5 nav">
+        <h4><%= @customer.family_name + @customer.given_name %>さんの会員情報</h4>
+      </div>
+      
+      <%= form_with model: @customer, url: admin_customer_path, method: :patch do |f| %>
+      <form class="form-horizontal">
+        <div class="row mb-3 form-group">
+          <label class="col-sm-3 col-form-label">会員ID</label>
+          <div class="col-sm-9">
+            <%= @customer.id %>
+          </div>
+        </div>
+        <div class="row mb-3 form-group"> 
+          <label class="col-sm-3 col-form-label">名前</label>
+          <div class="col-sm-9 form-inline">
+            <%= f.text_field :family_name, required: true, class: "form-control family_name" %>&nbsp;
+            <%= f.text_field :given_name, required: true, class: "form-control given_name" %>
+          </div>
+        </div>
+        <div class="row mb-3 form-group">
+          <label class="col-sm-3 col-form-label">フリガナ</label>
+          <div class="col-sm-9 form-inline">
+            <%= f.text_field :family_name_kana, required: true, class: "form-control family_name_kana" %>&nbsp;
+            <%= f.text_field :given_name_kana, required: true, class: "form-control given_name_kana" %>
+          </div>
+        </div>
+        <div class="row mb-3 form-group">
+          <label class="col-sm-3 col-form-label">郵便番号</label>
+          <div class="col-sm-9">
+            <%= f.text_field :postcode, required: true, class: "form-control" %>
+          </div>
+        </div>
+        <div class="row mb-3 form-group">
+          <label class="col-sm-3 col-form-label">住所</label>
+          <div class="col-sm-9">
+            <%= f.text_field :address, required: true, class: "form-control", :size=>60 %>
+          </div>
+        </div>
+        <div class="row mb-3 form-group">
+          <label class="col-sm-3 col-form-label">電話番号</label>
+          <div class="col-sm-9">
+            <%= f.text_field :phone_number, required: true, class: "form-control phone_number" %>
+          </div>
+        </div>
+        <div class="row mb-3 form-group">
+          <label class="col-sm-3 col-form-label">メールアドレス</label>
+          <div class="col-sm-9">
+            <%= f.text_field :email, required: true, class: "form-control email" %>
+          </div>
+        </div>
+        <div class="row mb-3 form-group">
+          <label class="col-sm-3 col-form-label">会員ステータス</label>
+          <div class="col-sm-9">
+            <div class="form-group">
+              <div class="form-check form-check-inline">
+                <%= f.radio_button :is_deleted, false, class: 'form-check-input customer_is_deleted_true' %>
+                <%= f.label :is_deleted, "有効", value: true, class: 'form-check-label align-middle' %>
+              </div>
+              <div class="form-check form-check-inline">
+                <%= f.radio_button :is_deleted, true, class: 'form-check-input customer_is_deleted_false' %>
+                <%= f.label :is_deleted, "退会", value: false, class: 'form-check-label align-middle'  %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-sm-3 mt-5 mb-5">
+            <%= f.submit "変更を保存", class: "btn btn-success" %>
+          </div>
+        </div>
+      </form>
+      <% end %> 
+    </div>
+  </div>
+</div>

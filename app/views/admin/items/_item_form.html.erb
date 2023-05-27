@@ -1,0 +1,83 @@
+<%= form_with model: @item, url: form_url do |f| %>
+
+  <div class='row justify-content-center'>
+    <div class='col-md-2'>
+      <%= f.label :商品画像 %>
+    </div>
+    <div class='col-md-6'>
+    <div class='form-group'>
+      <%= f.file_field :image, accept: 'image/*', class: 'item_image' %>
+    </div>
+    </div>
+  </div>
+
+  <div class='row justify-content-center'>
+    <div class='col-md-2'>
+      <%= f.label :商品名 %>
+    </div>
+    <div class='col-md-6'>
+    <div class='form-group'>
+      <%= f.text_field :name, required: true, class: 'form-control item_name' %>
+    </div>
+    </div>
+  </div>
+
+  <div class='row justify-content-center'>
+    <div class='col-md-2'>
+      <%= f.label :商品説明 %>
+    </div>
+    <div class='col-md-6'>
+    <div class='form-group'>
+      <%= f.text_area :description, required: true, class: 'form-control item_description' %>
+    </div>
+    </div>
+  </div>
+
+  <div class='row justify-content-center'>
+    <div class='col-md-2'>
+      <%= f.label :ジャンル %>
+    </div>
+    <div class='col-md-6'>
+    <div class='form-group'>
+      <%= f.collection_select :genre_id, Genre.all, :id, :name, {include_blank: '--選択して下さい--'}, required: true, class: 'form-control item_genre' %>
+    </div>
+    </div>
+  </div>
+
+  <div class='row justify-content-center'>
+    <div class='col-md-2'>
+      <%= f.label :税抜価格 %>
+    </div>
+    <div class='col-md-5'>
+      <div class='form-group'>
+        <%= f.number_field :price, required: true, class: 'form-control item_price' %>
+      </div>
+    </div>
+    <div class='col-md-1 d-flex align-items-center'>
+      <%= '円' %>
+    </div>
+  </div>
+
+  <div class='row justify-content-center'>
+    <div class='col-md-2'>
+      <%= f.label :販売ステータス %>
+    </div>
+    <div class='col-md-6'>
+      <div class='form-group'>
+        <div class="form-check form-check-inline">
+          <%= f.radio_button :is_valid, true, class: 'form-check-input item_is_valid_true' %>
+          <%= f.label :is_valid, '販売中', value: true, class: 'form-check-label align-middle' %>
+        </div>
+        <div class="form-check form-check-inline">
+          <%= f.radio_button :is_valid, false, class: 'form-check-input item_is_valid_false' %>
+          <%= f.label :is_valid, '販売停止中', value: false, class: 'form-check-label align-middle' %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class='row justify-content-center'>
+    <%= f.submit button_label, class: "btn btn-success btn-lg" %>
+  </div>
+
+<% end %>

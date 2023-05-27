@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-14 col-md-10 col-lg-7 px-7 px-sm-2 mx-auto">
+      <div class="mb-5 nav">
+        <h2>会員情報編集</h2>
+      </div>
+      
+      <%= form_with model: @customer, url: customers_path, method: :patch do |f| %>
+      <form class="form-horizontal">
+        <div class="row mb-3 form-group">
+          <label class="col-sm-3 col-form-label">名前</label>
+          <div class="col-sm-9 form-inline">
+              <%= f.text_field :family_name, required: true, class: "form-control" %>&nbsp;
+              <%= f.text_field :given_name, required: true, class: "form-control" %>
+          </div>
+        </div>
+        <div class="row mb-3 form-group">
+          <label class="col-sm-3 col-form-label">フリガナ</label>
+          <div class="col-sm-9 form-inline">
+            <%= f.text_field :family_name_kana, required: true, class: "form-control family_name_kana" %>&nbsp;
+            <%= f.text_field :given_name_kana, required: true, class: "form-control given_name_kana" %>
+          </div>
+        </div>
+        <div class="row mb-3 form-group">
+          <label class="col-sm-3 col-form-label">郵便番号</label>
+          <div class="col-sm-9">
+            <%= f.text_field :postcode, required: true, class: "form-control" %>
+          </div>
+        </div>
+        <div class="row mb-3 form-group">
+          <label class="col-sm-3 col-form-label">住所</label>
+          <div class="col-sm-9">
+            <%= f.text_field :address, required: true, class: "form-control", :size=>60 %>
+          </div>
+        </div>
+        <div class="row mb-3 form-group">
+          <label class="col-sm-3 col-form-label">電話番号</label>
+          <div class="col-sm-9">
+            <%= f.text_field :phone_number, required: true, class: "form-control phone_number" %>
+          </div>
+        </div>
+        <div class="row mb-3 form-group">
+          <label class="col-sm-3 col-form-label">メールアドレス</label>
+          <div class="col-sm-9">
+            <%= f.text_field :email, required: true, class: "form-control email" %>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="mt-5 mb-5 btn-group ">
+            <div class="col-sm-9 mb-3">
+              <%= f.submit "編集内容を保存", class: "btn btn-success" %>
+            </div>
+            <div class="col-sm-9 mb-3">
+              <%= link_to "退会する",  unsubscribe_customers_path, class: "btn btn-danger" %>
+            </div>
+          </div>
+        </div>
+      </form>
+      <% end %> 
+    </div>
+  </div>
+</div>

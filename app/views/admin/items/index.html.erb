@@ -1,0 +1,58 @@
+<%= render 'layouts/flash_message' %>
+
+<div class='container'>
+  <div class='row justify-content-center'>
+    <div class='col-lg-10'>
+
+    <h1 class='mb-5'>商品一覧</h1>
+
+    <div class='col-md-10'>
+
+      <div class="text-right mb-2">
+        <%= link_to new_admin_item_path, class: 'btn btn-light' do %>
+          <i class="fas fa-plus"></i>
+        <% end %>
+      </div>
+
+      <table class='table text-center'>
+        <thead class='table table-secondary'>
+          <tr>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>税抜価格</th>
+            <th>ジャンル</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @items.each do |item| %>
+          <tr>
+            <td><%= item.id %></td>
+            <td><%= link_to item.name, admin_item_path(item) %></td>
+            <td><%= item.price.to_s(:delimited) %></td>
+            <td><%= item.genre.name %></td>
+            <td>
+                <% if item.is_valid %>
+                <span class='text-success font-weight-bold'>
+                  <%= '販売中' %>
+                </span>
+                <% else %>
+                <span class='text-secondary font-weight-bold'>
+                  <%= '販売停止中' %>
+                </span>
+                <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <div class='row justify-content-center'>
+        <%= paginate @items, theme: 'twitter-bootstrap-4' %>
+      </div>
+
+    </div>
+    </div>
+  </div>
+</div>

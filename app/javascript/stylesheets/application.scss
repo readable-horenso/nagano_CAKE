@@ -1,0 +1,76 @@
+@use '~bootstrap/scss/bootstrap';
+
+@use '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Tokumin&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+
+  body {
+    height: 100%; /* 空の要素なので、高さの定義が必要です。 */
+    background-image: url("../../assets/images/paper_00041.jpg");
+    font-family: 'Kaisei Tokumin', serif;
+  div, p, span, li, a, input, th {
+    color: #b38a59;
+    font-weight: bold;
+  a {
+    text-decoration: none;
+      }
+    }
+  }
+
+  header {
+    background-color: #b6c0a8;
+    font-family: 'Sacramento', 'Kaisei Tokumin', cursive;
+    div, p, span, li, a, input, th {
+      color: #fff;
+    }
+  }
+
+  footer {
+    background-color: #b6c0a8;
+    color: #edefea;
+  }
+
+  a.page-link {
+    color: #b38a59;
+    background-color: #edefea;
+  }
+
+  th.genres {
+    color: #fff;
+    background-color: #668863;
+  }
+
+  tr.genres {
+    background-color: #fff;
+  }
+
+  input.search_btn {
+    background-color: #668863;
+  }
+  
+.swiper {
+  width: 800px;
+  height: 500px;
+}
+
+.swiper .swiper-slide .slide-image {
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+.caption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(0, 0);
+  text-align: center;
+  color: white;
+  font-size: 18px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5px 10px;
+  z-index: 2;
+  width: 60%;
+}

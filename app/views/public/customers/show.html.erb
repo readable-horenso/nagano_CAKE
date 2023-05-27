@@ -1,0 +1,65 @@
+<% if notice %>
+ <div class="alert alert-success">
+  <%= notice %>
+ </div>
+<% end %>
+
+<% if warning %>
+ <%= render "layouts/flash_message" %>
+<% end %>
+
+<div class="container">
+  <div class="navbar-brand">
+    <h1>マイページ</h1>
+  </div>
+  <div class="row mb-3">
+    <div class="col-2 mr-1">
+      <h3>登録情報</h3>
+    </div>
+    <div class="btn-inline">
+      <%= link_to "編集する", edit_customers_path, class: "btn btn-success" %>
+    </div>
+  </div>
+  <table class="table table-bordered">
+    <tr>
+      <th class="table-secondary">名前</th>
+      <td><%= @customer.full_name %></td>
+    </tr>
+    <tr>
+      <th class="table-secondary">カナ</th>
+      <td><%= @customer.full_name_kana %></td>
+    </tr>
+    <tr>
+      <th class="table-secondary">郵便番号</th>
+      <td><%= @customer.postcode %></td>
+    </tr>
+    <tr>
+      <th class="table-secondary">住所</th>
+      <td><%= @customer.address %></td>
+    </tr>
+    <tr>
+      <th class="table-secondary">電話番号</th>
+      <td><%= @customer.phone_number %></td>
+    </tr>
+    <tr>
+      <th class="table-secondary">メールアドレス</th>
+      <td><%= @customer.email %></td>
+    </tr>
+  </table>
+  <div class="row mb-3">
+    <div class="col-2 mr-1">
+      <h3>配送先</h3>
+    </div>
+    <div class="btn-inline">
+      <%= link_to "一覧を見る", destinations_path, class: " btn btn-primary" %>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-2 mr-1">
+      <h3>注文履歴</h3>
+    </div>
+    <div class="btn-inline">
+      <%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>

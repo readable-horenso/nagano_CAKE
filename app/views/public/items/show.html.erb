@@ -1,0 +1,53 @@
+<div class="container-fluid">
+  <div class="row justify-content-md-center">
+
+    <div class="col-2 mx-3">
+      <!--ジャンル検索-->
+      <%= render "public/genres/lists", genres: @genres %>
+
+    </div>
+
+    <div class="col-9 mx-3">
+
+      <div class="row media">
+        <div><%= image_tag @item.image, size: "400x300", class: "mr-3" %></div>
+
+        <div class="media-body">
+
+        <% if @item.is_valid %>
+          <h3 class="font-weight-bold mb-3"><%= @item.name %></h3>
+        <% else %>
+          <h3 class="font-weight-bold mb-3"><%= @item.name %>  <span class="badge badge-secondary">売切れ</span></h3>
+        <% end %>
+
+          <p class="h5 mb-5"><%= @item.description %></p>
+          <h4 class="d-inline"><%= @item.with_tax_price.to_s(:delimited) %>円</h4>
+          <span>(税込)</span>
+
+        </div>
+      </div>
+
+    <% if @item.is_valid %>
+      <!--カートアイテムへのフォーム-->
+      <%= form_with model: @cart_item, local: true do |f| %>
+        <div class="row form-inline mt-3">
+
+          <div class="form-group my-1 mr-sm-5">
+          <%= f.select :quantity, [*1..10], {include_blank: "個数選択"}, required: true, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+          <%= f.submit "カートに入れる", class: "btn btn-success" %>
+          </div>
+
+          <%= f.hidden_field :item_id, value: @item.id %>
+
+        </div>
+      <% end %>
+
+    <% end %>
+
+    </div>
+
+  </div>
+</div>

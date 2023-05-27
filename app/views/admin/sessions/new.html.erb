@@ -1,0 +1,36 @@
+<% if notice %>
+  <div class="alert alert-success">
+    <%= notice %>
+  </div>
+<% end %>
+
+<% if alert %>
+  <div class="alert alert-danger">
+    <%= alert %>
+  </div>
+<% end %>
+
+<div class="container">
+  <h4>管理者ログイン</h4>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <form>
+      <div class="row justify-content-center form-group ">
+        <label class="col-2 col-form-label">メールアドレス</label>
+        <div class="col-4">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", size: "40" %>
+        </div>
+      </div>
+      <div class="row justify-content-center form-group">
+        <label class="col-2 col-form-label">パスワード</label>
+        <div class="col-4">
+          <%= f.password_field :password, autocomplete: "current-password", size: "40" %>
+        </div>
+        </div>
+      <div class="row justify-content-center form-group">
+        <div class="mr-5">
+          <div><%= f.submit "ログイン", class: "btn btn-primary" %></div>
+        </div>
+      </div>
+    </form>
+    <% end %>
+</div>

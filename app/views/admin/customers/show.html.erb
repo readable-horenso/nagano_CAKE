@@ -1,0 +1,71 @@
+<div>
+  <%= render 'layouts/flash_message' %>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <h4 class="mb-5 font-weight-bold">
+        <%= @customer.family_name + @customer.given_name %>さんの会員詳細
+      </h4>
+
+      <table class="table">
+        <colgroup>
+          <col class="col-md-4">
+          <col class="col-md-4">
+        </colgroup>
+        <tbody>
+          <tr>
+            <td scope="row">会員ID</td>
+           <td><%= @customer.id %></td>
+          </tr>
+          <tr>
+            <td scope="row">氏名</td>
+            <td><%= @customer.full_name %></td>
+          </tr>
+          <tr>
+            <td scope="row">フリガナ</td>
+            <td><%= @customer.full_name_kana %></td>
+          </tr>
+          <tr>
+            <td scope="row">郵便番号</td>
+            <td><%= @customer.postcode %></td>
+          </tr>
+          <tr>
+            <td scope="row">住所</td>
+            <td><%= @customer.address %></td>
+          </tr>
+          <tr>
+            <td scope="row">電話番号</td>
+            <td><%= @customer.phone_number %></td>
+          </tr>
+          <tr>
+            <td scope="row">メールアドレス</td>
+            <td><%= @customer.email %></td>
+          </tr>
+          <tr>
+            <td scope="row">会員ステータス</td>
+            <td>
+              <% if @customer.is_deleted == false %>
+                <span class="text-success font-weight-bold">有効</span>
+              <% else %>
+                <span class="text-secondary font-weight-bold">退会</span>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="btn-group mb-5 mt-3">
+      <div class="col-sm-6">
+        <%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-success" %>
+      </div>
+      <div class="col-sm-9">
+        <%= link_to "注文一覧を見る", admin_customer_orderlist_path(@customer), class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+
+</div>

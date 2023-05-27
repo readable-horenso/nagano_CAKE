@@ -1,0 +1,61 @@
+<div>
+  <%= render "layouts/flash_message" %>
+</div>
+
+<div class="container">
+
+  <div class="row">
+    <h3 class="font-weight-bold mb-3">注文情報入力</h3>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <%= form_with model: @order, url: "/orders/confirm", method: :post, local: true do |f| %>
+        <h4 class="font-weight-bold">支払方法</h4>
+        <p>
+          <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+          <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
+          <br>
+          <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+          <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
+        </p>
+        <h4 class="font-weight-bold">お届け先</h4>
+
+        <%= f.radio_button :address_option, 0, checked: "checked" %>
+        <%= f.label :order_address, "ご自身の住所" %>
+        <br>
+        〒<%= current_customer.postcode %>
+        <%= current_customer.address %><br>
+        <%= current_customer.family_name %>
+        <%= current_customer.given_name %>
+
+        <br>
+        <% if current_customer.destinations.any? %>
+          <%= f.radio_button :address_option, 1 %>
+          <%= f.label :order_address, "登録済み住所から選択" %><br>
+          <%= f.select :destination_id, options_from_collection_for_select(current_customer.destinations, :id, :address_display) %><br>
+        <% end %>
+
+        <%= f.radio_button :address_option, 2 %>
+        <%= f.label :order_address, "新しいお届け先" %>
+        <table>
+          <tr>
+            <td class="col-3"><%= f.label :postcode, "郵便番号（ハイフンなし）" %></td>
+            <td class="col-9"><%= f.text_field :postcode, :placeholder => "1234567" %></td>
+          </tr>
+          <tr>
+            <td class="col-3"><%= f.label :address, "住所" %></td>
+            <td class="col-9"><%= f.text_field :address, :placeholder => "東京都渋谷区代々木", class: "w-100" %></td>
+          </tr>
+          <tr>
+            <td class="col-3"><%= f.label :name, "宛名" %></td>
+            <td class="col-9"><%= f.text_field :name, :placeholder => "山田花子" %></td>
+          </tr>
+        </table>
+        <div class="row justify-content-center py-5">
+          <%= f.submit "確認画面に進む", class:"btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
