@@ -6,7 +6,7 @@ DMM WEBCAMP「チーム開発フェーズ」課題
 - クライアントは、長野県にある小さな洋菓子店「ながの CAKE」
 - 商品を通販するためのECサイトの開発をしてほしい
 
-![スクリーンショット 2023-05-27 13 00 54](https://github.com/readable-horenso/nagano_CAKE/assets/129576342/540b89b8-aeca-4152-9d18-6cabdb75916b)
+![スクリーンショット 2023-05-27 131322](https://github.com/readable-horenso/nagano_CAKE/assets/129638089/2e361d26-7b6b-4722-a45a-0cc88b993d09)
 
 # 開発環境
   cloud9
