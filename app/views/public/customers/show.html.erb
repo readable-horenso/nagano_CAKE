@@ -1,4 +1,12 @@
-<%= render 'layouts/flash_message' %>
+<% if notice %>
+ <div class="alert alert-success">
+  <%= notice %>
+ </div>
+<% end %>
+
+<% if warning %>
+ <%= render "layouts/flash_message" %>
+<% end %>
 
 <div class="container">
   <div class="navbar-brand">
